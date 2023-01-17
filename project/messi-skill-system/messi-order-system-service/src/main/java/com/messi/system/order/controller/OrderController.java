@@ -129,32 +129,4 @@ public class OrderController {
         return orderQueryService.queryOrderDetailByTable(orderId);
     }
 
-    /**
-     * 分库分表环境，管理端(B端)的分页查询，查询数据库，以userId作为数据维度
-     */
-    public ResResult<Page<OrderQueryDTO>> queryBSideOrderPage() {
-        return null;
-    }
-
-    /**
-     * 分库分表环境，管理端(B端)的详情查询，查询数据库，以userId作为数据维度
-     */
-    public ResResult<Page<OrderQueryDTO>> queryBSideOrderDetail() {
-        return null;
-    }
-
-    /**
-     * 分库分表环境，用户端(C端)的分页查询，查询ES，以userId作为数据维度
-     */
-    public ResResult<Page<OrderQueryDTO>> queryCSideOrderPage() {
-        return null;
-    }
-
-    /**
-     * 分库分表环境，用户端(C端)的详情查询，查询ES，以userId作为数据维度
-     */
-    public ResResult<Page<OrderQueryDTO>> queryCSideOrderDetail() {
-        return null;
-    }
-
 }

@@ -51,7 +51,7 @@ actual_amount,order_pay_type,pay_time,coupon_id,appraise_status,create_time,modi
         o.modified_time AS modifiedTime
         FROM order_info AS o
         LEFT JOIN order_item_info AS item on o.order_id = item.order_id
-        LEFT JOIN order_price_details AS price_details on o.order_id = price_details.order_id
+        LEFT join order_price_details AS price_details on o.order_id = price_details.order_id
         <where>
             <if test='query.orderStatuses != null and query.orderStatuses.size !=0'>
                 <foreach collection='query.orderStatuses' item='orderStatus' open=' AND o.order_status in (' close=')'

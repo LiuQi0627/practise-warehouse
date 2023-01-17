@@ -12,7 +12,7 @@ CREATE TABLE `order_info`
 (
     `id`                bigint(20)  NOT NULL COMMENT '主键id',
     `channel`           tinyint(4)  NOT NULL COMMENT '渠道标识 0:C端渠道，999:其他',
-    `order_id`          varchar(50) NOT NULL COMMENT '订单号',
+    `order_id`          varchar(20) NOT NULL COMMENT '订单号',
     `order_type`        tinyint(4)  NOT NULL COMMENT '订单类型 0：标准订单 999：其他',
     `order_status`      tinyint(4)  NOT NULL COMMENT '00：未支付,10：已支付，20：已入库，30：已出库，40：配送中：50：已签收，60：已取消，999：订单失效\r\n注：省略已入库->已出库中间的履约流程',
     `order_cancel_time` datetime    NULL COMMENT '取消订单的时间',
