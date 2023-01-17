@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.messi.system.product.mapper.SkuMapper">
+
+    <resultMap id="ResultMap" type="com.messi.system.product.domain.entity.SkuDO">
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="sku_id" property="skuId"/>
+        <result column="sku_name" property="skuName"/>
+        <result column="sku_price" property="skuPrice"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <sql id="column_list">
+        id, product_id, sku_id, sku_name, sku_price, create_time, modified_time
+    </sql>
+
+</mapper>
