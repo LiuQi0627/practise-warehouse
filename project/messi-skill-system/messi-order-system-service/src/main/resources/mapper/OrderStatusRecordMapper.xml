@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.messi.system.order.mapper.OrderStatusRecordMapper">
+    <resultMap id="ResultMap" type="com.messi.system.order.domain.entity.OrderStatusRecordDO">
+        <id column="id" property="id"/>
+        <result column="order_id" property="orderId"/>
+        <result column="prev_status" property="prevStatus"/>
+        <result column="cur_status" property="curStatus"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <sql id="column_list">
+        id, order_id, prev_status,cur_status,create_time,modified_time
+    </sql>
+</mapper>

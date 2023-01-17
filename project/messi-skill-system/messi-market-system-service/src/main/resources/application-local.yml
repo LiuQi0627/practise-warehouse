@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: market-system
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.2.100:8848
+        username: nacos
+        password: nacos
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.2.100:3306/messi_market_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+  redis:
+    host: 192.168.2.100
+    port: 6379
+    password: 123456
+
+server:
+  port: 8083
+
+dubbo:
+  scan:
+    # 指定扫描的位置
+    base-packages: com.messi.system.market.api
+  registry:
+    address: spring-cloud://localhost
+  protocol:
+    name: dubbo
+    port: 28083
+  consumer:
+    check: false
+  # 订阅指定的服务
+  cloud:
+    subscribed-services: market-system, product-system
+
+mybatis-plus:
+  configuration:
+    # 开启打印SQL
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名转换
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+
+#seata配置
+seata:
+  tx-service-group: tx-market-group
+  service:
+    grouplist:
+      market-seata: 192.168.2.100:8091
+    vgroup-mapping:
+      tx-market-group: market-seata
+
+rocketmq:
+  name-server: 192.168.2.100:9876
+

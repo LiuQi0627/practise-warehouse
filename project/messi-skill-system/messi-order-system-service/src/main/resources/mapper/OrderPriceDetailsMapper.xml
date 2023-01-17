@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.messi.system.order.mapper.OrderPriceDetailsMapper">
+    <resultMap id="ResultMap" type="com.messi.system.order.domain.entity.OrderPriceDetailsDO">
+        <id column="id" property="id"/>
+        <result column="order_id" property="orderId"/>
+        <result column="order_item_id" property="orderItemId"/>
+        <result column="sku_id" property="skuId"/>
+        <result column="sale_num" property="saleNum"/>
+        <result column="sale_price" property="salePrice"/>
+        <result column="order_item_price" property="orderItemPrice"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <sql id="column_list">
+        id, order_id, order_item_id, sku_id, sale_num, sale_price, order_item_price,create_time,modified_time
+    </sql>
+</mapper>
