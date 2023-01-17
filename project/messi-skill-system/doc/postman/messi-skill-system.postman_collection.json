@@ -1,0 +1,482 @@
+{
+  "info": {
+    "_postman_id": "6db1f9cb-3128-4709-a27d-becf563fc722",
+    "name": "messi-skill-system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1、创建商品",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"productId\": \"001\",\r\n  \"skuName\": \"商品001-sku10001\",\r\n  \"skuPrice\": 1000,\r\n  \"skuReq\": {\r\n    \"skuId\": \"10001\",\r\n    \"totalStock\": 100,\r\n    \"saledStock\": 0,\r\n    \"lockedStock\": 0\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8082/product/create",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "product",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2、创建优惠券",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"couponId\": \"10001\",\r\n  \"couponType\": 0,\r\n  \"couponPrice\": 500,\r\n  \"couponDiscount\": 0,\r\n  \"userId\": \"200\",\r\n  \"useStatus\": 0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8083/coupon/create",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "coupon",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3、创建订单v1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderId\": \"\",\r\n  \"channel\": 0,\r\n  \"orderType\": 0,\r\n  \"sellerId\": \"100\",\r\n  \"userId\": \"200\",\r\n  \"totalAmount\": 1000,\r\n  \"couponId\": \"10001\",\r\n  \"provinceNo\": \"1000\",\r\n  \"cityNo\": \"1000\",\r\n  \"areaNo\": \"1000\",\r\n  \"detailAddress\": \"测试详细地址\",\r\n  \"recipientName\": \"收货人姓名\",\r\n  \"recipientPhone\": \"13344441111\",\r\n  \"orderItemReqList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"saleNum\": 1,\r\n      \"skuPrice\": 1000\r\n    }\r\n  ],\r\n  \"orderItemPriceList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"skuId\": \"10001\",\r\n      \"salePrice\": 1000\r\n    }\r\n  ],\r\n  \"orderProductList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"skuPrice\": 1000,\r\n      \"saleNum\": 1\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8084/order/submit/v1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "order",
+            "submit",
+            "v1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4、创建订单v2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderId\": \"\",\r\n  \"channel\": 0,\r\n  \"orderType\": 0,\r\n  \"sellerId\": \"100\",\r\n  \"userId\": \"200\",\r\n  \"totalAmount\": 1000,\r\n  \"couponId\": \"10001\",\r\n  \"provinceNo\": \"1000\",\r\n  \"cityNo\": \"1000\",\r\n  \"areaNo\": \"1000\",\r\n  \"detailAddress\": \"测试详细地址\",\r\n  \"recipientName\": \"收货人姓名\",\r\n  \"recipientPhone\": \"13344441111\",\r\n  \"orderItemReqList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"saleNum\": 1,\r\n      \"skuPrice\": 1000\r\n    }\r\n  ],\r\n  \"orderItemPriceList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"skuId\": \"10001\",\r\n      \"salePrice\": 1000\r\n    }\r\n  ],\r\n  \"orderProductList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"skuPrice\": 1000,\r\n      \"saleNum\": 1\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8084/order/submit/v2",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "order",
+            "submit",
+            "v2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5、创建订单v3",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderId\": \"\",\r\n  \"channel\": 0,\r\n  \"orderType\": 0,\r\n  \"sellerId\": \"100\",\r\n  \"userId\": \"200\",\r\n  \"totalAmount\": 1000,\r\n  \"provinceNo\": \"1000\",\r\n  \"cityNo\": \"1000\",\r\n  \"areaNo\": \"1000\",\r\n  \"detailAddress\": \"测试详细地址\",\r\n  \"recipientName\": \"收货人姓名\",\r\n  \"recipientPhone\": \"13344441111\",\r\n  \"orderItemReqList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"saleNum\": 1,\r\n      \"skuPrice\": 1000\r\n    }\r\n  ],\r\n  \"orderItemPriceList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"skuId\": \"10001\",\r\n      \"salePrice\": 1000\r\n    }\r\n  ],\r\n  \"orderProductList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"skuPrice\": 1000,\r\n      \"saleNum\": 1\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8084/order/submit/v3",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "order",
+            "submit",
+            "v3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6、查询订单单表分页",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderStatuses\":[\"20\"],\r\n  \"sellerIds\":[\"100\"],\r\n  \"userIds\":[\"200\"],\r\n  \"orderPayTypes\":[\"0\",\"1\",\"2\"],\r\n  \"appraiseStatuses\":[\"0\",\"1\"]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8084/order/queryOrderPageBySingleTable",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "order",
+            "queryOrderPageBySingleTable"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7、查询订单联表分页",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderStatuses\":[\"20\"],\r\n  \"sellerIds\":[\"100\"],\r\n  \"userIds\":[\"200\"],\r\n  \"orderPayTypes\":[\"0\",\"1\",\"2\"],\r\n  \"appraiseStatuses\":[\"0\",\"1\"]\r\n}"
+        },
+        "url": {
+          "raw": "localhost:8084/order/queryOrderPageByJoinTable",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "order",
+            "queryOrderPageByJoinTable"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "8、查询订单详情 查es",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "orderId",
+              "value": "20230112140332319200",
+              "type": "default"
+            }
+          ],
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8084/order/queryOrderDetailByEs",
+          "host": [
+            "localhost"
+          ],
+          "port": "8084",
+          "path": [
+            "order",
+            "queryOrderDetailByEs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9、请求nginx 创建订单v1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderId\": \"\",\r\n  \"channel\": 0,\r\n  \"orderType\": 0,\r\n  \"sellerId\": \"100\",\r\n  \"userId\": \"200\",\r\n  \"totalAmount\": 1000,\r\n  \"provinceNo\": \"1000\",\r\n  \"cityNo\": \"1000\",\r\n  \"areaNo\": \"1000\",\r\n  \"detailAddress\": \"测试详细地址\",\r\n  \"recipientName\": \"收货人姓名\",\r\n  \"recipientPhone\": \"13344441111\",\r\n  \"orderItemReqList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"saleNum\": 1,\r\n      \"skuPrice\": 1000\r\n    }\r\n  ],\r\n  \"orderItemPriceList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"skuId\": \"10001\",\r\n      \"salePrice\": 1000\r\n    }\r\n  ],\r\n  \"orderProductList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"skuPrice\": 1000,\r\n      \"saleNum\": 1\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "192.168.2.100:8078/order/submit/v1",
+          "host": [
+            "192",
+            "168",
+            "2",
+            "100"
+          ],
+          "port": "8078",
+          "path": [
+            "order",
+            "submit",
+            "v1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "10、请求nginx 创建订单v2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderId\": \"\",\r\n  \"channel\": 0,\r\n  \"orderType\": 0,\r\n  \"sellerId\": \"100\",\r\n  \"userId\": \"200\",\r\n  \"totalAmount\": 1000,\r\n  \"provinceNo\": \"1000\",\r\n  \"cityNo\": \"1000\",\r\n  \"areaNo\": \"1000\",\r\n  \"detailAddress\": \"测试详细地址\",\r\n  \"recipientName\": \"收货人姓名\",\r\n  \"recipientPhone\": \"13344441111\",\r\n  \"orderItemReqList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"saleNum\": 1,\r\n      \"skuPrice\": 1000\r\n    }\r\n  ],\r\n  \"orderItemPriceList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"skuId\": \"10001\",\r\n      \"salePrice\": 1000\r\n    }\r\n  ],\r\n  \"orderProductList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"skuPrice\": 1000,\r\n      \"saleNum\": 1\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "192.168.2.100:8078/order/submit/v2",
+          "host": [
+            "192",
+            "168",
+            "2",
+            "100"
+          ],
+          "port": "8078",
+          "path": [
+            "order",
+            "submit",
+            "v2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "11、请求nginx 创建订单v3",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderId\": \"\",\r\n  \"channel\": 0,\r\n  \"orderType\": 0,\r\n  \"sellerId\": \"100\",\r\n  \"userId\": \"200\",\r\n  \"totalAmount\": 1000,\r\n  \"provinceNo\": \"1000\",\r\n  \"cityNo\": \"1000\",\r\n  \"areaNo\": \"1000\",\r\n  \"detailAddress\": \"测试详细地址\",\r\n  \"recipientName\": \"收货人姓名\",\r\n  \"recipientPhone\": \"13344441111\",\r\n  \"orderItemReqList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"saleNum\": 1,\r\n      \"skuPrice\": 1000\r\n    }\r\n  ],\r\n  \"orderItemPriceList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"skuId\": \"10001\",\r\n      \"salePrice\": 1000\r\n    }\r\n  ],\r\n  \"orderProductList\": [\r\n    {\r\n      \"orderItemId\": \"\",\r\n      \"productId\": \"001\",\r\n      \"skuId\": \"10001\",\r\n      \"skuPrice\": 1000,\r\n      \"saleNum\": 1\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "192.168.2.100:8078/order/submit/v3",
+          "host": [
+            "192",
+            "168",
+            "2",
+            "100"
+          ],
+          "port": "8078",
+          "path": [
+            "order",
+            "submit",
+            "v3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "12、请求nginx 查询订单联表分页",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"orderStatuses\":[\"20\"],\r\n  \"sellerIds\":[\"100\"],\r\n  \"userIds\":[\"200\"],\r\n  \"orderPayTypes\":[\"0\",\"1\",\"2\"],\r\n  \"appraiseStatuses\":[\"0\",\"1\"]\r\n}"
+        },
+        "url": {
+          "raw": "192.168.2.100:8078/order/queryOrderPageByJoinTable",
+          "host": [
+            "192",
+            "168",
+            "2",
+            "100"
+          ],
+          "port": "8078",
+          "path": [
+            "order",
+            "queryOrderPageByJoinTable"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "13、请求nginx 查询订单详情 查es",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "orderId",
+              "value": "20230112140332319200",
+              "type": "default"
+            }
+          ],
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "192.168.2.100:8078/order/queryOrderDetailByEs",
+          "host": [
+            "192",
+            "168",
+            "2",
+            "100"
+          ],
+          "port": "8078",
+          "path": [
+            "order",
+            "queryOrderDetailByEs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "14、请求nginx 查询订单详情 查数据库",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "orderId",
+              "value": "20230112140332319200",
+              "type": "default"
+            }
+          ],
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "192.168.2.100:8078/order/queryOrderDetailByTable",
+          "host": [
+            "192",
+            "168",
+            "2",
+            "100"
+          ],
+          "port": "8078",
+          "path": [
+            "order",
+            "queryOrderDetailByTable"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

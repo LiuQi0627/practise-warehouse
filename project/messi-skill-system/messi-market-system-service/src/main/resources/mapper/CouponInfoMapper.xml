@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.messi.system.market.mapper.CouponInfoMapper">
+    <resultMap id="ResultMap" type="com.messi.system.market.domain.entity.CouponInfoDO">
+        <id column="id" property="id"/>
+        <result column="coupon_id" property="couponId"/>
+        <result column="coupon_type" property="couponType"/>
+        <result column="coupon_price" property="couponPrice"/>
+        <result column="coupon_discount" property="couponDiscount"/>
+        <result column="user_id" property="userId"/>
+        <result column="use_status" property="useStatus"/>
+        <result column="usage_time" property="usageTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <sql id="column_list">
+        id, coupon_id, coupon_type, coupon_price, coupon_discount, user_id, use_status,usage_time,create_time,modified_time
+    </sql>
+</mapper>
