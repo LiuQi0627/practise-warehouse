@@ -10,8 +10,7 @@
         </filter>
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
             <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.TraceIdPatternLogbackLayout">
-                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid] %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} -
-                    %.-16384msg%n
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid] %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} - %.-16384msg%n
                 </Pattern>
             </layout>
             <!-- 设置字符集 -->
@@ -27,8 +26,7 @@
         <!--日志文档输出格式-->
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
             <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.TraceIdPatternLogbackLayout">
-                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid] %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} -
-                    %.-16384msg%n
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid] %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} - %.-16384msg%n
                 </Pattern>
             </layout>
             <charset>UTF-8</charset>
@@ -61,8 +59,7 @@
         <!--日志文档输出格式-->
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
             <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.TraceIdPatternLogbackLayout">
-                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid] %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} -
-                    %.-16384msg%n
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid] %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} - %.-16384msg%n
                 </Pattern>
             </layout>
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->
@@ -89,8 +86,7 @@
     <appender name="GRPC-LOG" class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.log.GRPCLogClientAppender">
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
             <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.mdc.TraceIdMDCPatternLogbackLayout">
-                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid] %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} -
-                    %.-16384msg%n
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%tid] %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} - %.-16384msg%n
                 </Pattern>
             </layout>
         </encoder>
