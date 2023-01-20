@@ -14,6 +14,7 @@ spring:
       url: jdbc:mysql://192.168.2.100:3306/messi_order_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
       username: root
       password: 123456
+
   redis:
     host: 192.168.2.100
     port: 6379
@@ -40,7 +41,7 @@ dubbo:
 mybatis-plus:
   configuration:
     # 开启控制台打印SQL
-    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 开启驼峰命名转换
     map-underscore-to-camel-case: true
     # 指定mapper.xml在resources目录的位置
