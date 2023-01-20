@@ -129,6 +129,11 @@ public class OrderQueryServiceImpl implements OrderQueryService {
         List<OrderItemInfoDO> orderItemInfoDOList = orderItemInfoDAO.getItemList(orderId);
         OrderPriceDO orderPriceDO = orderPriceDAO.getOrderPrice(orderId);
 
+        //  检查参数
+        if (orderInfoDO == null || orderItemInfoDOList == null || orderPriceDO == null) {
+            throw new RuntimeException("getByDatabase查询数据失败,数据是空");
+        }
+
         //  封装数据构造器对象
         OrderDetailDTO detailDTO = OrderDetailDTO.builder()
                 .orderId(orderId)
