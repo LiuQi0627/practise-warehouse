@@ -33,8 +33,7 @@
         <file>${log.path}/logs/info.log</file>
         <!--日志文档输出格式-->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} -
-                %.-16384msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} - %.-16384msg%n
             </pattern>
             <charset>UTF-8</charset>
         </encoder>
@@ -62,8 +61,7 @@
         <file>${log.path}/logs/error.log</file>
         <!--日志文档输出格式-->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} -
-                %.-16384msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%.15thread] %logger{36} [%M:%line]:%X{sysUser} - %.-16384msg%n
             </pattern>
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->
         </encoder>

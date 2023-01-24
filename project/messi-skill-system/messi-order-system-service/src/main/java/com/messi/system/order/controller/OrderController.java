@@ -129,4 +129,44 @@ public class OrderController {
         return orderQueryService.queryOrderDetailByTable(orderId);
     }
 
+    /**
+     * 分库分表环境，管理端(B端)的分页查询，查询数据库，以userId作为数据维度
+     */
+    public ResResult<Page<OrderQueryDTO>> queryBSideOrderPage() {
+        return null;
+    }
+
+    /**
+     * 分库分表环境，管理端(B端)的详情查询，查询数据库，以userId作为数据维度
+     */
+    public ResResult<Page<OrderQueryDTO>> queryBSideOrderDetail() {
+        return null;
+    }
+
+    /**
+     * 分库分表环境，用户端(C端)的分页查询，查询ES，以userId作为数据维度
+     */
+    public ResResult<Page<OrderQueryDTO>> queryCSideOrderPage() {
+        return null;
+    }
+
+    /**
+     * 分库分表环境，用户端(C端)的详情查询，查询ES，以userId作为数据维度
+     */
+    public ResResult<Page<OrderQueryDTO>> queryCSideOrderDetail() {
+        return null;
+    }
+
+    /**
+     * 分库分表环境，全量+增量的数据异构同步存储
+     * 在将数据从数据库迁移到ES的过程中，数据库还会有新的数据进入，
+     * 这里的方案采用全量+增量同步。
+     * 首先是串行化跑一个全量同步数据的线程，将所有的全量数据写完。
+     * 然后启动一个增量线程，把每条binlog都跟已经同步过的数据做一个比对，如果存在不同，以最新的binlog为准。
+     *
+     * 优势：数据迁移过程的逻辑很清晰，将全量和增量分开执行，避免掉各种复杂的数据冲突和线程并发问题。
+     * 劣势：因为是串行化，所以执行的时间会较长，全量执行完以后，还要执行一次增量。
+     */
+
+
 }

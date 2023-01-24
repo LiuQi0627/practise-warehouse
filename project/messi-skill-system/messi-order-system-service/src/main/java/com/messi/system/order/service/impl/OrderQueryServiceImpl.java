@@ -127,10 +127,11 @@ public class OrderQueryServiceImpl implements OrderQueryService {
         //  查询数据库
         OrderInfoDO orderInfoDO = orderDAO.getOrder(orderId);
         List<OrderItemInfoDO> orderItemInfoDOList = orderItemInfoDAO.getItemList(orderId);
-        OrderPriceDO orderPriceDO = orderPriceDAO.getOrderPrice(orderId);
+        //  因为故意没做order_price表的分库分表，所以这里暂时注释掉查询order_price表
+//        OrderPriceDO orderPriceDO = orderPriceDAO.getOrderPrice(orderId);
 
         //  检查参数
-        if (orderInfoDO == null || orderItemInfoDOList == null || orderPriceDO == null) {
+        if (orderInfoDO == null || orderItemInfoDOList == null) {
             throw new RuntimeException("getByDatabase查询数据失败,数据是空");
         }
 
@@ -149,7 +150,7 @@ public class OrderQueryServiceImpl implements OrderQueryService {
                 .payTime(orderInfoDO.getPayTime())
                 .couponId(orderInfoDO.getCouponId())
                 .appraiseStatus(orderInfoDO.getAppraiseStatus())
-                .orderTotalPrice(orderPriceDO.getOrderTotalPrice())
+//                .orderTotalPrice(orderPriceDO.getOrderTotalPrice())
                 .createTime(orderInfoDO.getCreateTime())
                 .modifiedTime(new Date())
                 .build();

@@ -1,6 +1,7 @@
 package com.messi.system.order;
 
 import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.util.RandomUtil;
 import com.messi.system.order.builder.OrderBuilder;
 import com.messi.system.order.dao.*;
 import com.messi.system.order.domain.builder.Order;
@@ -77,7 +78,7 @@ public class MockSubmitOrderDataTest {
     }
 
     private void mockCreateData() {
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             SubmitOrderReq submitOrderReq = new SubmitOrderReq();
             submitOrderReq.setChannel(0);
             submitOrderReq.setOrderType(0);
@@ -132,7 +133,7 @@ public class MockSubmitOrderDataTest {
     }
 
     public String generateSellerOrUserId() {
-        return String.valueOf(new Random().nextInt(2));
+        return String.valueOf(RandomUtil.randomInt(100, 1000));
     }
 
     @Transactional
