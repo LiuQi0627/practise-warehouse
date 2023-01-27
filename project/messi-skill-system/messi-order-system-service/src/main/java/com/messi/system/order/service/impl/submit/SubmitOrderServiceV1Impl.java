@@ -51,10 +51,10 @@ public class SubmitOrderServiceV1Impl extends AbstractSubmitOrder implements Sub
         //  8、做订单价格优惠扣减
         Integer finalPrice = super.deductionOrderPrice(checkCouponDTO, calculatedOrderPrices);
 
-        //  9、分布式事务扣优惠券MQ
+        //  9、分布式事务扣优惠券
         this.distributedTransactionDeductionCoupon(checkCouponDTO);
 
-        //  10、分布式事务扣库存MQ
+        //  10、分布式事务扣库存
         this.distributedTransactionDeductionStock(submitOrderReq.getOrderProductList());
 
         //  11、构造订单
