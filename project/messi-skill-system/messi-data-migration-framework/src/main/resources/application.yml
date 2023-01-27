@@ -1,0 +1,85 @@
+spring:
+  application:
+    name: data-migration
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 8085
+
+data:
+  migration:
+    # 自定义全量时间的时间戳
+    # 时间戳通过 DataMigrationTest类 得出结算
+    fullDataDeadline: 1674316800000
+    batchDataSize: 1000
+
+
+# 单库配置
+migrate:
+  datasource:
+    druid:
+      origin:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.2.100:3306/messi_order_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
+
+      # 分库配置
+      target:
+        showSql: true
+        table-num: 8
+
+        datasources[0]:
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.2.110:3306/messi_order_system_0?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+
+        datasources[1]:
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.2.111:3306/messi_order_system_1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+
+        datasources[2]:
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.2.112:3306/messi_order_system_2?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+
+        datasources[3]:
+          driverClassName: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.2.113:3306/messi_order_system_3?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: 123456
+
+        # 分表配置
+        shardingrules[0]:
+          logicTable: order_info
+          dbShardingColumns: order_id
+          dbShardingAlgorithm: com.messi.system.data.migration.algorithm.DatabasePreciseShardingAlgorithm
+          tableShardingColumns: order_id
+          tableShardingAlgorithm: com.messi.system.data.migration.algorithm.TablePreciseShardingAlgorithm
+
+        shardingrules[1]:
+          logicTable: order_item_info
+          dbShardingColumns: order_id
+          dbShardingAlgorithm: com.messi.system.data.migration.algorithm.DatabasePreciseShardingAlgorithm
+          tableShardingColumns: order_id
+          tableShardingAlgorithm: com.messi.system.data.migration.algorithm.TablePreciseShardingAlgorithm
+
+        shardingrules[2]:
+          logicTable: order_price_details
+          dbShardingColumns: order_id
+          dbShardingAlgorithm: com.messi.system.data.migration.algorithm.DatabasePreciseShardingAlgorithm
+          tableShardingColumns: order_id
+          tableShardingAlgorithm: com.messi.system.data.migration.algorithm.TablePreciseShardingAlgorithm
+
+canal:
+  server:
+    hostname: 192.168.2.100
+    port: 11111
+    destination: data-migration
+    username: admin
+    password: 123456
