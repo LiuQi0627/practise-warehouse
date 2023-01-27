@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.messi.system.data.migration.mapper.targetdb.TargetOrderItemInfoTableMapper">
+
+    <resultMap id="ResultMap" type="com.messi.system.data.migration.entity.OrderItemInfoDO">
+        <id column="id" property="id"/>
+        <result column="order_id" property="orderId"/>
+        <result column="order_item_id" property="orderItemId"/>
+        <result column="product_id" property="productId"/>
+        <result column="sku_id" property="skuId"/>
+        <result column="sale_num" property="saleNum"/>
+        <result column="sale_price" property="salePrice"/>
+        <result column="seller_id" property="sellerId"/>
+        <result column="user_id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <sql id="column_list">
+        id, order_id, order_item_id, product_id, sku_id, sale_num, sale_price,seller_id,user_id,create_time,modified_time
+    </sql>
+
+    <select id="getMaxId" resultType="java.lang.Long">
+        SELECT MAX(id)
+        FROM order_item_info
+    </select>
+
+    <insert id="batchInsert">
+        INSERT INTO order_item_info (<include refid="column_list"/>)
+        VALUES
+        <foreach collection="orderItemInfoDOs" item="item" index="index" separator=",">
+            (#{item.id},#{item.orderId},#{item.orderItemId},#{item.productId},#{item.skuId},#{item.saleNum},#{item.salePrice},#{item.sellerId},#{item.userId},#{item.createTime},#{item.modifiedTime})
+        </foreach>
+    </insert>
+
+    <select id="getModified" resultType="java.util.Date">
+        SELECT modified_time
+        FROM order_item_info
+        WHERE id = #{id}
+          AND order_id = #{orderId}
+    </select>
+
+</mapper>
