@@ -21,6 +21,7 @@
         <module>messi-market-system-api</module>
         <module>messi-market-system-service</module>
         <module>messi-eventual-consistency-framework</module>
+        <module>messi-data-migration-framework</module>
     </modules>
 
     <properties>
@@ -126,7 +127,7 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
-                <version>1.2.8</version>
+                <version>1.1.24</version>
             </dependency>
 
             <dependency>

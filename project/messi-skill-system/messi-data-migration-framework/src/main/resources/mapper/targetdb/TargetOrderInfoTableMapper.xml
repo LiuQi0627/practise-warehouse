@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.messi.system.data.migration.mapper.targetdb.TargetOrderInfoTableMapper">
+
+    <resultMap id="ResultMap" type="com.messi.system.data.migration.entity.OrderInfoDO">
+        <id column="id" property="id"/>
+        <result column="channel" property="channel"/>
+        <result column="order_id" property="orderId"/>
+        <result column="order_type" property="orderType"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="order_cancel_time" property="orderCancelTime"/>
+        <result column="seller_id" property="sellerId"/>
+        <result column="user_id" property="userId"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="actual_amount" property="actualAmount"/>
+        <result column="order_pay_type" property="orderPayType"/>
+        <result column="pay_time" property="payTime"/>
+        <result column="coupon_id" property="couponId"/>
+        <result column="appraise_status" property="appraiseStatus"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+    </resultMap>
+
+    <sql id="column_list">
+        id, channel, order_id, order_type, order_status, order_cancel_time, seller_id,user_id,total_amount,
+actual_amount,order_pay_type,pay_time,coupon_id,appraise_status,create_time,modified_time
+    </sql>
+
+    <select id="getMaxId" resultType="java.lang.Long">
+        SELECT MAX(id)
+        FROM order_info
+    </select>
+
+    <insert id="batchInsert">
+        INSERT INTO order_info (<include refid="column_list"/>)
+        VALUES
+        <foreach collection="orderInfoDOs" item="item" index="index" separator=",">
+            (#{item.id},#{item.channel},#{item.orderId},#{item.orderType},#{item.orderStatus},#{item.orderCancelTime},#{item.sellerId},#{item.userId},#{item.totalAmount},#{item.actualAmount},#{item.orderPayType},#{item.payTime},#{item.couponId},#{item.appraiseStatus},#{item.createTime},#{item.modifiedTime})
+        </foreach>
+    </insert>
+
+    <select id="getModified" resultType="java.util.Date">
+        SELECT modified_time
+        FROM order_info
+        WHERE id = #{id}
+          AND order_id = #{orderId}
+    </select>
+
+</mapper>
