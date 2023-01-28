@@ -22,6 +22,8 @@
         <module>messi-market-system-service</module>
         <module>messi-eventual-consistency-framework</module>
         <module>messi-data-migration-framework</module>
+        <module>messi-snapup-system-api</module>
+        <module>messi-snapup-system</module>
     </modules>
 
     <properties>

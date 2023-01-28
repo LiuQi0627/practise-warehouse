@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.messi.snap.up.config.jedis.JedisAutoConfiguration,\
+  com.messi.snap.up.config.EventBusAutoConfiguration

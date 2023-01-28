@@ -1,0 +1,102 @@
+spring:
+  application:
+    name: snapup-system
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.2.100:8848
+        username: nacos
+        password: nacos
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.2.100:3306/messi_product_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+
+messi:
+  snap:
+    up:
+      # 匹配 worker bus，每个线程池执行一个worker bus的事件
+      threads:
+        - threadPool: Process1
+          threadCount: 1
+
+        - threadPool: Process2
+          threadCount: 1
+
+        - threadPool: Process3
+          threadCount: 1
+
+        - threadPool: Process4
+          threadCount: 1
+
+        - threadPool: Process5
+          threadCount: 1
+      jedis:
+        redisAddress:
+          - 192.168.2.110:6379
+          - 192.168.2.111:6379
+          - 192.168.2.112:6379
+          - 192.168.2.113:6379
+      event:
+        bus:
+          # boss bus 全局只有一个
+          boss:
+            ringBufferSize: 4096
+            eventHandlerNum: 1
+
+          # 有几个流程，就配置几个worker bus
+          workers:
+            - channel: Process1
+              ringBufferSize: 4096
+              eventHandlerNum: 1
+
+            - channel: Process2
+              ringBufferSize: 4096
+              eventHandlerNum: 1
+
+            - channel: Process3
+              ringBufferSize: 4096
+              eventHandlerNum: 1
+
+            - channel: Process4
+              ringBufferSize: 4096
+              eventHandlerNum: 1
+
+            - channel: Process5
+              ringBufferSize: 4096
+              eventHandlerNum: 1
+
+server:
+  port: 8086
+
+dubbo:
+  scan:
+    # 指定扫描的位置
+    base-packages: com.messi.sanp.up.inventory.api
+  registry:
+    address: spring-cloud://localhost
+  protocol:
+    name: dubbo
+    port: 28086
+  consumer:
+    check: false
+    # 订阅指定的服务
+  cloud:
+    subscribed-services: snapup-system
+
+mybatis-plus:
+  configuration:
+    # 开启打印SQL
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名转换
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+
+rocketmq:
+  name-server: 192.168.2.100:9876
+
+logging:
+  config: classpath:logback-spring.xml
