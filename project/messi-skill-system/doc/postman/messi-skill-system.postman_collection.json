@@ -513,6 +513,62 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "17、抢购商品分配库存",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"promotionId\": 1,\r\n  \"skuId\": 10001,\r\n  \"totalPurchaseStock\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8086/inventory/inventoryShards",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"inventory",
+						"inventoryShards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "18、发起抢购",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"promotionId\": 1,\r\n  \"skuId\": 10001,\r\n  \"userId\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8086/snapup/sku",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"snapup",
+						"sku"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
